@@ -55,8 +55,8 @@ Clone the repository instead:
     Yay! COMPAS is installed correctly!
 
     COMPAS: 1.17.0
-    Python: 3.9.10 (CPython)
-    Extensions: ['compas-occ', 'compas-gmsh', 'compas-cgal', 'compas-view2', 'compas-fab', 'compas-rrc']
+    Python: 3.9.13 (CPython)
+    Extensions: ['compas-cgal', 'compas-gmsh', 'compas-rrc', 'compas-fab', 'compas-occ', 'compas-view2']
 
 ### Update installation
 
