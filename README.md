@@ -19,7 +19,7 @@ If you need help with the installation process, please post a note on the worksh
 
 ## Installation
 
-> **NOTE**: If you're on Windows, all commands below have to be executed in the *Anaconda Prompt* (NOT the *Command Prompt*, with admin privileges)
+> **NOTE**: If you're on Windows, all commands below have to be executed in the *Anaconda Prompt* (NOT the *Command Prompt*)
 
 We use `conda` to make sure we have clean, isolated environment for dependencies.
 
