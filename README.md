@@ -13,7 +13,13 @@ Optional:
 
 * [Docker Desktop](https://www.docker.com/products/docker-desktop) After installation on Windows, it is required to enable "Virtualization" on the BIOS of the computer.
 
+## Help
+
+If you need help with the installation process, please post a note on the workshop Slack channel: [Join AEC22 Slack](https://join.slack.com/t/slack-ck54085/shared_invite/zt-1higgedpw-qpWrnzAAadSEf~hstGnZ_w)
+
 ## Installation
+
+> **NOTE**: If you're on Windows, all commands below have to be executed in the *Anaconda Prompt* (NOT the *Command Prompt*, with admin privileges)
 
 We use `conda` to make sure we have clean, isolated environment for dependencies.
 
@@ -48,9 +54,9 @@ Clone the repository instead:
 
     Yay! COMPAS is installed correctly!
 
-    COMPAS: 1.16.0
-    Python: 3.8.13 (CPython)
-    Extensions: ['compas-fab', 'compas-cgal', 'compas-rrc']
+    COMPAS: 1.17.0
+    Python: 3.9.10 (CPython)
+    Extensions: ['compas-occ', 'compas-gmsh', 'compas-cgal', 'compas-view2', 'compas-fab', 'compas-rrc']
 
 ### Update installation
 
