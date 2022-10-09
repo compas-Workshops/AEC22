@@ -43,7 +43,7 @@ Make sure you run this at least once:
 
 ### Get the workshop files
 
-Clone the repository instead:
+Clone the repository:
 
     (aec22) cd Documents
     (aec22) git clone https://github.com/compas-Workshops/AdvanceAEC-Autumn.git
