@@ -6,12 +6,21 @@ dependencies:
    - python=3.9
    - pip
    - git
-   - compas
-   - compas_cgal
-   - compas_occ
-   - compas_view2
+   - compas>=1.17.0
+   - compas_cgal>=0.5.0
+   - compas_occ>=0.6.0
+   - compas_view2>=0.8.0
    - compas_fab
    - compas_rrc
+   - ipopt  # [not win]
+   - ipopt=3.11.1  # [win]
    - pip:
+     - black
      - ur-rtde
+     - qt-material
      - compas_gmsh
+     - compas_cloud
+     - compas_ui
+     - compas_fd
+     - compas_fofin
+     - git+https://github.com/BlockResearchGroup/compas_cra.git
