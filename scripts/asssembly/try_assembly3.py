@@ -1,8 +1,5 @@
 import os
 import compas
-from compas.geometry import Polygon
-from compas.geometry import Scale
-from compas.geometry import Pointcloud
 from compas_assembly.datastructures import Assembly
 from compas_assembly.datastructures import Block
 from compas_assembly.algorithms import assembly_interfaces
@@ -15,14 +12,7 @@ SESSION = os.path.join(HERE, "session.json")
 meshes = compas.json_load(GEOMETRY)
 
 # =============================================================================
-# Scale
-# =============================================================================
-
-for mesh in meshes:
-    mesh.transform(Scale.from_factors([1e-2, 1e-2, 1e-2]))
-
-# =============================================================================
-# Assemble
+# Assembly
 # =============================================================================
 
 assembly = Assembly()
@@ -34,7 +24,6 @@ for mesh in meshes:
 # Interfaces
 # =============================================================================
 
-# we should make tmax dependent from the block size, as a default...
 assembly_interfaces(assembly, nmax=20, tmax=1e-3, amin=1e-2)
 
 # =============================================================================
