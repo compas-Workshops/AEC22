@@ -4,7 +4,6 @@ from compas.geometry import Sphere
 from compas.geometry import is_coplanar
 from compas.datastructures import Mesh
 from compas.datastructures import mesh_merge_faces
-from compas.datastructures import mesh_weld
 
 from compas_view2.app import App
 
@@ -12,7 +11,7 @@ from compas_cgal.booleans import boolean_union
 from compas_cgal.meshing import remesh
 
 # ==============================================================================
-# Make a box and a sphere
+# Make a box
 # ==============================================================================
 
 box = Box.from_width_height_depth(2, 2, 2)
@@ -20,6 +19,10 @@ box = Mesh.from_shape(box)
 box.quads_to_triangles()
 
 A = box.to_vertices_and_faces()
+
+# ==============================================================================
+# Make a sphere
+# ==============================================================================
 
 sphere = Sphere(Point(1, 1, 1), 1)
 sphere = Mesh.from_shape(sphere, u=32, v=32)
