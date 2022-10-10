@@ -1,5 +1,4 @@
-from compas.geometry import Box
-from compas.geometry import Sphere
+from compas.geometry import Box, Sphere
 from compas.colors import Color
 from compas_occ.brep import BRep
 from compas_view2.app import App
@@ -10,17 +9,11 @@ box = BRep.from_box(box)
 sphere = Sphere([1, 1, 1], 0.5)
 sphere = BRep.from_sphere(sphere)
 
-shape = box - sphere
-
 viewer = App()
-viewer.add(
-    box,
-    facecolor=Color.red().lightened(50),
-    linecolor=Color.red(),
-)
-viewer.add(
-    sphere,
-    facecolor=Color.blue().lightened(50),
-    linecolor=Color.blue(),
-)
+viewer.view.camera.position = [4, -2.5, 2]
+viewer.view.camera.target = [0, 1, 0]
+
+viewer.add(box, facecolor=Color.red().lightened(50), linecolor=Color.red())
+viewer.add(sphere, facecolor=Color.blue().lightened(50), linecolor=Color.blue())
+
 viewer.run()
