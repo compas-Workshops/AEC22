@@ -11,6 +11,10 @@ sphere = BRep.from_sphere(sphere)
 
 shape = box - sphere
 
+# =============================================================================
+# Viz
+# =============================================================================
+
 viewer = App()
 viewer.view.camera.position = [4, -2.5, 2]
 viewer.view.camera.target = [0, 1, 0]

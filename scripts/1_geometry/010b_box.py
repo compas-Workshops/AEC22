@@ -18,6 +18,10 @@ step = span / n
 params = [curve.domain[0] + i * step for i in range(n + 1)]
 frames = [curve.frame_at(t) for t in params]
 
+# =============================================================================
+# Viz
+# =============================================================================
+
 viewer = App(width=1600, height=900)
 viewer.view.camera.position = [0, 8, 2]
 viewer.view.camera.target = [4, 0, 0]

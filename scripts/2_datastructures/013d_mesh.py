@@ -1,7 +1,7 @@
+from math import radians
 import compas
 from compas.datastructures import Mesh
-from compas.geometry import Line
-from compas.geometry import Cylinder
+from compas.geometry import Line, Cylinder
 from compas.colors import Color
 from compas_view2.app import App
 from compas_view2.objects import Collection
@@ -24,13 +24,13 @@ for edge in forwardedges:
     pipe = Cylinder([(line.midpoint, line.direction), 0.1], line.length)
     color = pink if edge == start else blue
     pipes.append(pipe)
-    props.append({'facecolor': color.lightened(50), 'linecolor': color})
+    props.append({"facecolor": color.lightened(50), "linecolor": color})
 
 for edge in backwardedges[1:]:
     line = Line(mesh.vertex_coordinates(edge[0]), mesh.vertex_coordinates(edge[1]))
     pipe = Cylinder([(line.midpoint, line.direction), 0.1], line.length)
     pipes.append(pipe)
-    props.append({'facecolor': green.lightened(50), 'linecolor': green})
+    props.append({"facecolor": green.lightened(50), "linecolor": green})
 
 face_color = {}
 
@@ -52,8 +52,17 @@ for edge in backwardedges[1::2]:
         face = mesh.halfedge_face(u, v)
         face_color[face] = green.lightened(75)
 
+# =============================================================================
+# Viz
+# =============================================================================
+
 viewer = App()
+viewer.view.show_grid = False
+viewer.view.camera.position = [30, 28, 10]
+viewer.view.camera.target = [30, 28, 0]
+viewer.view.camera.rotation = [radians(75), 0, -radians(90)]
+
 viewer.add(mesh, facecolor=face_color)
 viewer.add(Collection(pipes, props))
-viewer.view.camera.zoom_extents()
+
 viewer.run()

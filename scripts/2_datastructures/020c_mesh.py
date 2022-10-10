@@ -1,3 +1,4 @@
+from math import radians
 import compas
 from compas.datastructures import Mesh
 from compas_cgal.meshing import remesh
@@ -14,7 +15,15 @@ V, F = remesh(mesh.to_vertices_and_faces(), target_edge_length=L)
 mesh = Mesh.from_vertices_and_faces(V, F)
 dual = mesh.dual()
 
+# =============================================================================
+# Viz
+# =============================================================================
+
 viewer = App()
+viewer.view.camera.position = [30, 28, 10]
+viewer.view.camera.target = [30, 28, 0]
+viewer.view.camera.rotation = [radians(75), 0, -radians(90)]
+
 viewer.add(dual)
-viewer.view.camera.zoom_extents()
+
 viewer.run()

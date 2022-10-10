@@ -12,6 +12,10 @@ curve = NurbsCurve.from_points(points)
 frame = curve.frame_at(curve.domain[0])
 box = Box(frame, 0.8, 0.5, 0.3)
 
+# =============================================================================
+# Viz
+# =============================================================================
+
 viewer = App(width=1600, height=900)
 viewer.view.camera.position = [0, 8, 2]
 viewer.view.camera.target = [4, 0, 0]

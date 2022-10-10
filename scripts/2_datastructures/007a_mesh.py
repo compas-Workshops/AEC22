@@ -1,3 +1,4 @@
+from math import radians
 import compas
 from compas.datastructures import Mesh
 from compas.geometry import Line
@@ -17,8 +18,17 @@ for edge in loop:
     line = Line(a, b)
     lines.append(line)
 
-viewer = App(enable_sceneform=True, enable_propertyform=True)
+# =============================================================================
+# Viz
+# =============================================================================
+
+viewer = App()
+viewer.view.show_grid = False
+viewer.view.camera.position = [30, 28, 10]
+viewer.view.camera.target = [30, 28, 0]
+viewer.view.camera.rotation = [radians(75), 0, -radians(90)]
+
 viewer.add(mesh)
-viewer.add(Collection(lines), linewidth=10, linecolor=Color.from_hex('#0092d2'))
-viewer.view.camera.zoom_extents()
+viewer.add(Collection(lines), linewidth=10, linecolor=Color.blue())
+
 viewer.run()

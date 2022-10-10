@@ -9,6 +9,10 @@ transform = Transformation.from_frame_to_frame(box.frame, frame)
 
 box2 = box.transformed(transform)
 
+# =============================================================================
+# Viz
+# =============================================================================
+
 viewer = App()
 viewer.view.camera.position = [2, -3, 1]
 viewer.view.camera.target = [0, 1, 0]
