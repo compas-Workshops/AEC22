@@ -46,7 +46,7 @@ Make sure you run this at least once:
 Clone the repository:
 
     (aec22) cd Documents
-    (aec22) git clone https://github.com/compas-Workshops/AdvanceAEC-Autumn.git
+    (aec22) git clone https://github.com/compas-Workshops/AEC22.git
 
 ### Verify installation
 
