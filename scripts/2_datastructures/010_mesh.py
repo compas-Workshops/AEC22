@@ -11,32 +11,35 @@ mesh = Mesh.from_obj(compas.get("tubemesh.obj"))
 start = mesh.edge_sample(size=1)[0]
 loop = mesh.halfedge_loop(start)
 
-pipes = []
-properties = []
-for edge in loop:
-    a = mesh.vertex_coordinates(edge[0])
-    b = mesh.vertex_coordinates(edge[1])
-    line = Line(a, b)
-    pipe = Cylinder([(line.midpoint, line.direction), 0.05], line.length)
-    pipes.append(pipe)
+print(start)
+print(loop)
 
-    if edge == start:
-        properties.append(
-            {
-                "facecolor": Color.pink().lightened(50),
-                "linecolor": Color.pink(),
-            }
-        )
-    else:
-        properties.append(
-            {
-                "facecolor": Color.from_hex("#0092d2").lightened(50),
-                "linecolor": Color.from_hex("#0092d2"),
-            }
-        )
+# pipes = []
+# properties = []
+# for edge in loop:
+#     a = mesh.vertex_coordinates(edge[0])
+#     b = mesh.vertex_coordinates(edge[1])
+#     line = Line(a, b)
+#     pipe = Cylinder([(line.midpoint, line.direction), 0.05], line.length)
+#     pipes.append(pipe)
 
-viewer = App()
-viewer.add(mesh)
-viewer.add(Collection(pipes, properties))
-viewer.view.camera.zoom_extents()
-viewer.run()
+#     if edge == start:
+#         properties.append(
+#             {
+#                 "facecolor": Color.pink().lightened(50),
+#                 "linecolor": Color.pink(),
+#             }
+#         )
+#     else:
+#         properties.append(
+#             {
+#                 "facecolor": Color.from_hex("#0092d2").lightened(50),
+#                 "linecolor": Color.from_hex("#0092d2"),
+#             }
+#         )
+
+# viewer = App()
+# viewer.add(mesh)
+# viewer.add(Collection(pipes, properties))
+# viewer.view.camera.zoom_extents()
+# viewer.run()

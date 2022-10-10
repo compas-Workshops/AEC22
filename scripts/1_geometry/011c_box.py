@@ -13,20 +13,14 @@ sphere = BRep.from_sphere(sphere)
 shape = box - sphere
 
 viewer = App()
-# viewer.add(
-#     box,
-#     facecolor=Color.red().lightened(50),
-#     linecolor=Color.red(),
-# )
-# viewer.add(
-#     sphere,
-#     facecolor=Color.blue().lightened(50),
-#     linecolor=Color.blue(),
-# )
 viewer.add(
-    shape,
-    facecolor=Color.green().darkened(50),
-    linecolor=Color.green(),
+    box,
+    facecolor=Color.red().lightened(50),
+    linecolor=Color.red(),
 )
-viewer.view.camera.zoom_extents()
+viewer.add(
+    sphere,
+    facecolor=Color.blue().lightened(50),
+    linecolor=Color.blue(),
+)
 viewer.run()

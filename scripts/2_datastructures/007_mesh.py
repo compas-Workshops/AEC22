@@ -17,7 +17,7 @@ for edge in loop:
     line = Line(a, b)
     lines.append(line)
 
-viewer = App()
+viewer = App(enable_sceneform=True, enable_propertyform=True)
 viewer.add(mesh)
 viewer.add(Collection(lines), linewidth=10, linecolor=Color.from_hex('#0092d2'))
 viewer.view.camera.zoom_extents()
