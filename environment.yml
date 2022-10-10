@@ -18,7 +18,6 @@ dependencies:
      - black
      - ur-rtde
      - qt-material
-     - compas_gmsh
      - compas_cloud
      - compas_ui
      - compas_fd
