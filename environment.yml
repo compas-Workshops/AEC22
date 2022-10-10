@@ -14,4 +14,3 @@ dependencies:
    - compas_rrc
    - pip:
      - ur-rtde
-     - compas_gmsh
