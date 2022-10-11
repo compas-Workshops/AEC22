@@ -16,6 +16,7 @@ n = 100
 span = curve.domain[1] - curve.domain[0]
 step = span / n
 params = [curve.domain[0] + i * step for i in range(n + 1)]
+
 frames = [curve.frame_at(t) for t in params]
 transforms = [Transformation.from_frame_to_frame(frame, f) for f in frames]
 

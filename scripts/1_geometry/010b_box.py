@@ -16,6 +16,7 @@ n = 100
 span = curve.domain[1] - curve.domain[0]
 step = span / n
 params = [curve.domain[0] + i * step for i in range(n + 1)]
+
 frames = [curve.frame_at(t) for t in params]
 
 # =============================================================================
@@ -28,6 +29,7 @@ viewer.view.camera.target = [4, 0, 0]
 
 viewer.add(curve.to_polyline(), linewidth=2)
 viewer.add(box)
+
 for frame in frames:
     viewer.add(frame, linewidth=5, size=0.5)
 

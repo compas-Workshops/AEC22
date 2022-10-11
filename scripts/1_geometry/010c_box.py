@@ -16,6 +16,7 @@ n = 100
 span = curve.domain[1] - curve.domain[0]
 step = span / n
 params = [curve.domain[0] + i * step for i in range(n + 1)]
+
 frames = [curve.frame_at(t) for t in params]
 transforms = [Transformation.from_frame_to_frame(frame, f) for f in frames]
 
@@ -32,6 +33,7 @@ viewer.add(box)
 
 for frame in frames:
     viewer.add(frame, linewidth=5, size=0.5)
+
 for transform in transforms:
     viewer.add(box.transformed(transform))
 
