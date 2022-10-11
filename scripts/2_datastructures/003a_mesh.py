@@ -5,6 +5,7 @@ from compas.colors import Color
 from compas_view2.app import App
 
 mesh = Mesh.from_obj(compas.get("tubemesh.obj"))
+
 faces = mesh.face_sample(size=53)
 
 face_color = {}

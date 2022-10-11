@@ -6,6 +6,7 @@ from compas.colors import Color
 from compas_view2.app import App
 
 mesh = Mesh.from_obj(compas.get("tubemesh.obj"))
+
 vertex = mesh.vertex_sample(size=1)[0]
 nbrs = mesh.vertex_neighbors(vertex)
 

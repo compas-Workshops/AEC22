@@ -13,6 +13,7 @@ loop = mesh.edge_loop(start)
 
 pipes = []
 props = []
+
 for edge in loop:
     a = mesh.vertex_coordinates(edge[0])
     b = mesh.vertex_coordinates(edge[1])

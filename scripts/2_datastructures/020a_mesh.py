@@ -3,7 +3,12 @@ import compas
 from compas.datastructures import Mesh
 from compas_view2.app import App
 
+# load a tubemesh
+
 mesh = Mesh.from_obj(compas.get("tubemesh.obj"))
+
+# convert all quads to triangles
+
 mesh.quads_to_triangles()
 
 # =============================================================================
