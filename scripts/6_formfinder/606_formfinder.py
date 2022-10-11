@@ -1,6 +1,7 @@
 import os
 import compas
 from compas.datastructures import Mesh
+from compas.datastructures import mesh_offset
 from compas.datastructures import mesh_thicken
 from compas.geometry import add_vectors
 from compas.geometry import scale_vector
@@ -13,8 +14,6 @@ from OCC.Core.BRep import BRep_Builder
 
 from compas_view2.app import App
 from compas_view2.objects import Collection
-
-from compas_gmsh.models import MeshModel
 
 # ==============================================================================
 # Set the path to the input file.
@@ -42,8 +41,8 @@ for vertex in cablemesh.vertices():
 # ==============================================================================
 
 THICKNESS = 0.10
-SHELL_THICKNESS = 0.04
-OFFSET = 0.02
+THICKNESS_BOX = 0.07
+OFFSET = 0.03
 
 # ==============================================================================
 # Create a thickened shell mesh without cavities yet.
@@ -64,6 +63,8 @@ shell_brep.make_solid()
 # Generate the formwork blocks.
 # ==============================================================================
 
+cablemesh = mesh_offset(cablemesh, -0.01)
+
 compound = TopoDS_Compound()
 builder = BRep_Builder()
 builder.MakeCompound(compound)
@@ -74,25 +75,20 @@ for fkey in cablemesh.faces():
     points = cablemesh.vertices_attributes('xyz', keys=vertices)
 
     # offset edges of the bottom face polygon to create space for the ribs.
-    offset = offset_polygon(points, OFFSET) 
+    bottom = offset_polygon(points, OFFSET) 
 
     # define the 2 planes perpendicular to the face normal 
     # placed at a distances along the face normal from the face centroid.
     origin = cablemesh.face_centroid(fkey)
     normal = cablemesh.face_normal(fkey, unitized=True)
-    plane_shell = add_vectors(origin, scale_vector(normal, SHELL_THICKNESS)), normal
-    plane = add_vectors(origin, scale_vector(normal, THICKNESS+0.01)), normal
+    plane = add_vectors(origin, scale_vector(normal, THICKNESS_BOX)), normal
     
     # the vertices of the top face are the intersection points of the face normal
     # placed at each (offset) bottom vertex and the previously constructed plane.
     top = []
-    bottom = []
-    for a in offset:
+    for a in bottom:
         b = add_vectors(a, normal)
         line = a, b
-
-        intersection = intersection_line_plane(line, plane_shell)
-        bottom.append(intersection)
         intersection = intersection_line_plane(line, plane)
         top.append(intersection)
 
@@ -125,21 +121,12 @@ ribbed_shell = shell_brep - blocks_brep
 ribbed_shell.make_solid()
 
 # ==============================================================================
-# Generate mesh for FEA.
-# ==============================================================================
-
-model = MeshModel.from_brep(ribbed_shell)
-model.options.mesh.meshsize_max = 0.2
-model.generate_mesh()
-mesh = model.mesh_to_compas()
-
-# ==============================================================================
 # Visualize the mesh and its block with the COMPAS viewer. 
 # The collection allows displaying a list of objects as a group.
 # ==============================================================================
 
 viewer = App(viewmode='ghosted', show_grid=False, enable_propertyform=True)
 
-viewer.add(mesh)
+viewer.add(ribbed_shell)
 
 viewer.show()

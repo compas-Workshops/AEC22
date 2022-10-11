@@ -15,6 +15,8 @@ from OCC.Core.BRep import BRep_Builder
 from compas_view2.app import App
 from compas_view2.objects import Collection
 
+from compas_gmsh.models import MeshModel
+
 # ==============================================================================
 # Set the path to the input file.
 # The input file was generated with `Export` which serialises the cablemesh
@@ -48,7 +50,8 @@ OFFSET = 0.03
 # Create a thickened shell mesh without cavities yet.
 # ==============================================================================
 
-shell_mesh = mesh_thicken(cablemesh, thickness=THICKNESS, both=False)
+offset_mesh = mesh_offset(cablemesh, 0.01)
+shell_mesh = mesh_thicken(offset_mesh, thickness=THICKNESS, both=False)
 
 # ==============================================================================
 # Convert to a BRep.
@@ -119,12 +122,22 @@ ribbed_shell = shell_brep - blocks_brep
 ribbed_shell.make_solid()
 
 # ==============================================================================
+# Generate mesh for FEA.
+# ==============================================================================
+
+ribbed_shell.to_step('shell.stp')
+model = MeshModel.from_step('shell.stp')
+model.options.mesh.meshsize_max = 0.2
+model.generate_mesh()
+mesh = model.mesh_to_compas()
+
+# ==============================================================================
 # Visualize the mesh and its block with the COMPAS viewer. 
 # The collection allows displaying a list of objects as a group.
 # ==============================================================================
 
 viewer = App(viewmode='ghosted', show_grid=False, enable_propertyform=True)
 
-viewer.add(ribbed_shell)
+viewer.add(mesh)
 
 viewer.show()
