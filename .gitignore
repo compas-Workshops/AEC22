@@ -117,3 +117,7 @@ ENV/
 
 output/
 data/*.json
+
+# temp stuff
+
+temp/**
