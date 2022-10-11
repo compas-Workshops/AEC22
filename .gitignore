@@ -120,4 +120,4 @@ data/*.json
 
 # temp stuff
 
-__temp/**
+temp/**
