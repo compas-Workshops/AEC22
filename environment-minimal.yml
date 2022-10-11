@@ -20,4 +20,3 @@ dependencies:
      - compas_fd
      - compas_fofin
      - compas_assembly>=0.5.0
-     - git+https://github.com/BlockResearchGroup/compas_cra.git
