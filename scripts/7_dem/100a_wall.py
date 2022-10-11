@@ -1,6 +1,9 @@
+import compas_rhino
 from compas.geometry import Point
 from compas.geometry import NurbsCurve
-from compas_view2.app import App
+from compas.artists import Artist
+
+compas_rhino.clear()
 
 points = [
     Point(0, 0, 0),
@@ -10,7 +13,5 @@ points = [
 ]
 
 curve = NurbsCurve.from_points(points)
-
-viewer = App()
-viewer.add(curve.to_polyline())
-viewer.run()
+artist = Artist(curve, layer="Wall::Curve")
+artist.draw()
