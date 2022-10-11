@@ -12,3 +12,12 @@ dependencies:
    - compas_view2>=0.8.0
    - compas_fab
    - compas_rrc
+   - pip:
+     - black
+     - qt-material
+     - compas_cloud
+     - compas_ui
+     - compas_fd
+     - compas_fofin
+     - compas_assembly>=0.5.0
+     - git+https://github.com/BlockResearchGroup/compas_cra.git
