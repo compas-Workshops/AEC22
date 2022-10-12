@@ -9,7 +9,7 @@ box2 = Box.from_corner_corner_height([0, 0, 0], [1, 1, 0], 1)
 # Viz
 # =============================================================================
 
-viewer = App()
+viewer = App(enable_sceneform=True, enable_propertyform=True)
 viewer.view.camera.position = [2, -3, 1]
 viewer.view.camera.target = [0, 0, 0]
 
