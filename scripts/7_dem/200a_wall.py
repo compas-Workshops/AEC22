@@ -1,12 +1,17 @@
 import compas_rhino
-from compas_rhino.conversions import RhinoCurve
+from compas.geometry import Point
+from compas.geometry import NurbsCurve
 from compas.artists import Artist
 
-# compas_rhino.clear()
+compas_rhino.clear()
 
-guid = compas_rhino.select_curve()
+points = [
+    Point(0, 0, 0),
+    Point(3, 3, 0),
+    Point(6, -6, 0),
+    Point(9, 0, 0),
+]
 
-curve = RhinoCurve.from_guid(guid).to_compas()
-
+curve = NurbsCurve.from_points(points)
 artist = Artist(curve, layer="Wall::Curve")
 artist.draw()
