@@ -34,7 +34,7 @@ Make sure you run this at least once:
 </details>
 
 
-    (base) conda env create -f https://dfab.link/aec22.yml
+    (base) conda env create -f https://raw.githubusercontent.com/compas-Workshops/AEC22/main/environment.yml
 
 ### Add to Rhino
 
@@ -62,4 +62,4 @@ Clone the repository:
 
 To update your environment:
 
-    (aec22) conda env update -f https://dfab.link/aec22.yml
+    (aec22) conda env update -f https://raw.githubusercontent.com/compas-Workshops/AEC22/main/environment.yml
